@@ -22,7 +22,7 @@ const projects = [
 },
 {
     id: "fullstack-user-portal",
-    image: ["diagram-export-7-24-2025-5_31_33-PM (1).svg"],
+    image: ["diagram-export-7-24-2025-5_31_33-PM(1).svg"],
     title: "Full Stack User Portal",
     description: "A scalable backend built with Node.js and MongoDB, featuring JWT-based authentication, secure file uploads, and 10+ RESTful APIs. Optimized developer experience using nodemon and Prettier for faster iteration and cleaner code.",
     technologies: ["JavaScript", "Node.js", "Express", "MongoDB", "Mongoose"],
