@@ -10,7 +10,7 @@ import Footer from "./components/footer.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen  bg-gray-50 dark:bg-black transition-colors duration-300">
       <Container>
         <Navbar />
         <Hero />

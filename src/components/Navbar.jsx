@@ -15,15 +15,24 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="
-        sticky top-4 z-50
-        max-w-6xl mx-auto
-        px-6 py-4
-        flex items-center justify-between
-        rounded-2xl
-        backdrop-blur-sm
-        bg-white/70 dark:bg-black/50
-        border border-black/5 dark:border-white/10
+            sticky top-4 z-50
+    max-w-6xl mx-auto
+    px-4 sm:px-6 py-4
+    flex items-center justify-between
+    
+    rounded-2xl
+    backdrop-blur-sm
+    bg-white/70 dark:bg-black/50
+    border border-black/5 dark:border-white/10
       "
+        // sticky top-4 z-50
+        // max-w-6xl mx-auto
+        // px-6 py-4
+        // flex items-center justify-between
+        // rounded-2xl
+        // backdrop-blur-sm
+        // bg-white/70 dark:bg-black/50
+        // border border-black/5 dark:border-white/10
         >
             {/* Left */}
             <div className="flex items-center gap-3">
@@ -41,15 +50,15 @@ export default function Navbar() {
                         })
                     }
                     className="
-            w-12 h-12 rounded-lg
-            bg-blue-400 dark:bg-yellow-300
-            border border-white
-            cursor-pointer
+                w-12 h-12 rounded-lg
+                bg-blue-400 dark:bg-yellow-300
+                border border-white
+                cursor-pointer
         "
                 />
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 ">
                 {/* Nav */}
                 <nav className="flex space-x-4 translate-y-0 text-md font-medium text-gray-700 dark:text-gray-300">
                     {["Skills", "Projects", "Contact"].map((item) => (

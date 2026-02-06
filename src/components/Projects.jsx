@@ -48,19 +48,20 @@ export default function ProjectsSection() {
                 <motion.div
                     className="
           
-            grid gap-8 lg:grid-cols-2
+            grid gap-8 lg:grid-cols-2 
           "
                     variants={container}
                 >
                     {projects.map((project) => (
-                        <motion.div variants={fadeUp}>
-                            <ProjectCard
-                                key={project.title}
-                                {...project}
-                                onViewDetails={setActiveProject}
-                            />
-                        </motion.div>
-                    ))}
+  <motion.div key={project.id} variants={fadeUp}>
+    <ProjectCard
+      {...project}
+      onViewDetails={setActiveProject}
+    />
+  </motion.div>
+))}
+
+                
                 </motion.div>
             </div>
 
