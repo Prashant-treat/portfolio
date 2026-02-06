@@ -7,7 +7,7 @@ const projects = [
     image: ["blogy0.png"],
     title: "Blogy",
     description: "Blogy — a blogging website project built with JavaScript, providing basic blogging functionality and structure.",
-    technologies: ["JavaScript", "HTML", "CSS", "Vite"],
+    technologies: ["JavaScript", "HTML", "CSS","React","Appwrite", "Vite"],
     status: "Active",
     github: "https://github.com/Prashant-treat/Blogy",
     website: "#",
