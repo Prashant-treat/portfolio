@@ -59,7 +59,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <iframe
-                src="/resume.pdf"
+                src={`${import.meta.env.BASE_URL}resume.pdf`}
                 className="w-full h-full"
                 title="Resume"
               />

@@ -37,7 +37,12 @@ export default function ProjectDetail({ project, onClose }) {
                     {/* Close Button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-5 right-5 z-20 w-9 h-9 rounded-full bg-black/60 text-white hover:bg-black/80"
+                        className="fixed top-2 right-5 z-20
+    w-9 h-9 rounded-full
+    bg-black/60 text-white
+    hover:bg-black/80
+    flex items-center justify-center
+    focus:outline-none focus:ring-2 focus:ring-white/70"
                     >
                         ✕
                     </button>
