@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { useTheme } from "../context/ThemeContext";
+import avatar from "../assets/image.png";
+
 
 export default function Navbar() {
     const { theme, toggleTheme } = useTheme();
@@ -38,7 +40,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
                 {/* Avatar */}
                 <motion.img
-                    src="/src/assets/image.png"
+                    src={avatar}
                     alt="Avatar"
                     whileHover={{ scale: 0.95 }}
                     whileTap={{ scale: 0.9 }}

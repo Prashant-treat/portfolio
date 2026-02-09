@@ -2,6 +2,7 @@ import Badge from "./Badge";
 import { useState } from "react";
 import ResumePage from "./ResumePage.jsx";
 
+
 import {
     CIcon,
     CppIcon,
@@ -38,7 +39,7 @@ export default function Hero() {
                 transition={{ delay: 0.2, duration: 0.6 }}
             >
                 <img
-                    src="/src/assets/image.png"
+                    src="image.png"
                     alt="Profile"
                     className="w-28 h-28 rounded-full mx-auto bg-blue-300 dark:bg-yellow-300"
                 />

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -16,34 +15,22 @@ const Contact = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const [status, setStatus] = useState({
-    type: null,
-    message: "",
-  });
+  const [status, setStatus] = useState(null);
 
   const onSubmit = async (data) => {
-    setStatus({ type: null, message: "" });
+    setStatus(null);
 
     try {
-      const serviceId =""
-      const templateId = "";
-      const publicKey = "";
+      const response = await fetch("https://your-backend.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("Missing EmailJS environment variables");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Something went wrong");
       }
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: data.name,
-          phone: data.phone,
-          email: data.email,
-          message: data.message,
-        },
-        publicKey
-      );
 
       setStatus({
         type: "success",
@@ -54,8 +41,7 @@ const Contact = () => {
     } catch (err) {
       setStatus({
         type: "error",
-        message:
-          err?.text || err?.message || "Failed to send message. Try again later.",
+        message: err.message || "Failed to send message. Try again later.",
       });
     }
   };
@@ -68,7 +54,7 @@ const Contact = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
-      variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Header */}
@@ -84,7 +70,6 @@ const Contact = () => {
             Get in touch with me. I will get back to you as soon as possible.
           </p>
         </motion.div>
-
 
         {/* Form */}
         <motion.div
@@ -102,14 +87,7 @@ const Contact = () => {
           <motion.form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: {
-                transition: { staggerChildren: 0.12 },
-              },
-            }}
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
           >
             {/* Name & Phone */}
             <motion.div
@@ -139,21 +117,16 @@ const Contact = () => {
               {/* Phone */}
               <div>
                 <label className="block text-sm font-medium mb-2 text-black dark:text-gray-200">
-                  Phone 
+                  Phone
                 </label>
                 <input
                   {...register("phone")}
                   type="tel"
-                  placeholder="+1 (123) xxx-xxxx"
+                  placeholder="+91  xxx-xxx-xxxx"
                   className="w-full rounded-md border border-gray-300 dark:border-white/15
                   bg-white dark:bg-white/10 text-black dark:text-white px-4 py-3
                   focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition"
                 />
-                {errors.phone && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.phone.message}
-                  </p>
-                )}
               </div>
             </motion.div>
 
@@ -192,14 +165,9 @@ const Contact = () => {
                 {...register("message", { required: "Message is required" })}
                 rows={5}
                 placeholder="Tell me about your project or just say hello..."
-                className=" w-full rounded-lg border
-    border-gray-300 dark:border-white/15
-    bg-white dark:bg-white/10
-    text-zinc-900 dark:text-white
-    placeholder-gray-400 dark:placeholder-gray-300
-    px-4 py-3
-    focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white
-    transition duration-200"
+                className="w-full rounded-lg border border-gray-300 dark:border-white/15
+                bg-white dark:bg-white/10 text-black dark:text-white px-4 py-3
+                focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition"
               />
               {errors.message && (
                 <p className="text-sm text-red-500 mt-1">
@@ -209,7 +177,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Status */}
-            {status.type && (
+            {status && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
